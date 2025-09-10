@@ -1,6 +1,6 @@
 ---
 title: 'Variational Autoencoders'
-date: JUNE 08, 2025
+date: Sept 11, 2023
 author: Hardik Prabhu
 image: "/images/blogs_img/vae/image.png"
 
