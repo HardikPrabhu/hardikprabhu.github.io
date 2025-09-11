@@ -11,7 +11,7 @@ tags:
   
 ---
 
-These blogs focus on key concepts from the books that I found valuable. While I will generally omit proofs, I'll point out notable insights that are essential. For understanding them in detail, I encourage reading the books themselves and working out the chapter exercises. The goal is to keep track of all the essential theorems and ideas required for generative modelling.
+This blog focus on key concepts from the books that I found valuable. While I will generally omit proofs, I'll point out notable insights that are essential. For understanding them in detail, I encourage reading the books themselves and working out the chapter exercises. The goal is to keep track of all the essential theorems and ideas required for generative modelling.
 
 The books are available here:
 
@@ -30,29 +30,28 @@ For unions, we want our measure to be additive in some sense. If we have two non
 
 Therefore, the resulting sets obtained by performing these fundamental operations should be measurable. This leads us to define the fundamental collection of subsets of a space, called a ring.
 
-**Definition 1.** A ring is a collection of subsets on which a measure could be defined.
+**Definition** A ring is a collection of subsets on which a measure could be defined.
 
 * Closed under union: If $A$ and $B$ are in $\mathcal{R}$, then $A \cup B$ is also in $\mathcal{R}$
 * Closed under set difference: If $A$ and $B$ are in $\mathcal{R}$, then $A \setminus B$ is also in $\mathcal{R}$
 * The empty set $\emptyset$ is in $\mathcal{R}$
 
-**Properties 1.** The following properties can be derived from the above definition:
+**Properties** The following properties can be derived from the above definition:
 
 * Closed under finite unions: By using the principle of mathematical induction, we can show that if $A_1, A_2, ..., A_n$ are in $\mathcal{R}$, then $\bigcup_{i=1}^n A_i$ is also in $\mathcal{R}$
 * Closed under finite intersections: For any $A, B \in \mathcal{R}$, we have $A \cap B = A \setminus (A \setminus B)$. Since $\mathcal{R}$ is closed under set difference, $A \cap B \in \mathcal{R}$. This can be extended to finite intersections by induction
 * Closed under symmetric difference: For any $A, B \in \mathcal{R}$, the symmetric difference $A \triangle B = (A \setminus B) \cup (B \setminus A)$ is in $\mathcal{R}$, as $\mathcal{R}$ is closed under both set difference and union
 
-**Definition 2.** An algebra is a ring of subsets of $X$, which also contains the set $X$.
+**Definition** An algebra is a ring of subsets of $X$, which also contains the set $X$.
 
 The most trivial example of an algebra is the power set $\mathcal{P}(X)$ of $X$.
 
-**Definition 3.** A $\sigma$-ring $\mathcal{S}$ on a set $X$ is a ring of subsets of $X$ that is closed under countable unions as well.
+**Definition** A $\sigma$-ring $\mathcal{S}$ on a set $X$ is a ring of subsets of $X$ that is closed under countable unions as well.
 
-If $$ {A_n}_{n=1}^{\infty} $$ is a countable sequence of sets in $$ \mathcal{S} $$, then $$ \bigcup_{n=1}^{\infty} A_n \in \mathcal{S} $$.
+If $$ \{A_n\}_{n=1}^{\infty} $$ is a countable sequence of sets in $$ \mathcal{S} $$, then $$ \bigcup_{n=1}^{\infty} A_n \in \mathcal{S} $$.
 
-Similarly, $\sigma$-algebra is closed under countable unions.
 
-**Properties 2.** The following properties describe how a ring is generated from an arbitrary collection of subsets of $X$. Let $\varepsilon \subset \mathcal{P}(X)$. Then:
+**Properties** The following properties describe how a ring is generated from an arbitrary collection of subsets of $X$. Let $\varepsilon \subset \mathcal{P}(X)$. Then:
 
 * The collection of subsets of $X$ which can be covered by the union of finite members of $\varepsilon$ is a ring:
   $$\mathcal{R}_\varepsilon = \{A \subseteq X : A \subseteq \bigcup_{i=1}^n E_i \text{ for some finite } n \in \mathbb{N} \text{ and } E_1, ..., E_n \in \mathcal{E}\}$$
@@ -74,22 +73,59 @@ Rings form the mathematical foundation for what we can measure, with sigma algeb
 * $\mu$ is countably additive. If $$ {E_n}_{n=1}^{\infty} $$ is a sequence of disjoint sets in $R$ such that $$ \bigcup_{n=1}^{\infty} E_n \in R $$, then:
   $\mu(\bigcup_{n=1}^{\infty} E_n) = \sum_{n=1}^{\infty} \mu(E_n)$
 
-**Properties 1.** Monotonicity: For any sets $A, B \in R$, if $A \subseteq B$, then:
+**Properties** 
+* Monotonicity: For any sets $A, B \in R$, if $A \subseteq B$, then:
 $\mu(A) \leq \mu(B)$
 
-**Properties 2.** Countable Subadditivity: For any sequence of sets $$ {E_n}_{n=1}^{\infty} $$ in $R$ where $$ \bigcup_{n=1}^{\infty} E_n \in R $$ :
+* Countable Subadditivity: For any sequence of sets $$ {E_n}_{n=1}^{\infty} $$ in $R$ where $$ \bigcup_{n=1}^{\infty} E_n \in R$$ :
 $$ \mu(\bigcup_{n=1}^{\infty} E_n) \leq \sum_{n=1}^{\infty} \mu(E_n) $$
 
 
-**Properties 3.** Continuity from Below (for increasing sequences):
+* Continuity from Below (for increasing sequences):
 If $$\{E_n\}{n=1}^{\infty}$$ is an increasing sequence of sets in R (meaning $$E_1 \subseteq E_2 \subseteq E_3 \subseteq \cdots$$) and $$\bigcup_{n=1}^{\infty} E_n \in R$$, then:
 $\mu(\bigcup_{n=1}^{\infty} E_n) = \lim_{n \to \infty} \mu(E_n)$
 
-**Properties 4.** Continuity from Above (for decreasing sequences):
+* Continuity from Above (for decreasing sequences):
 If $$\{E_n\}{n=1}^{\infty}$$ is a decreasing sequence of sets in R (meaning $$E_1 \supseteq E_2 \supseteq E_3 \supseteq \cdots$$) and $$\mu(E_1) < \infty$$, and $$\bigcap_{n=1}^{\infty} E_n \in R$$, then:
 $$\mu(\bigcap_{n=1}^{\infty} E_n) = \lim_{n \to \infty} \mu(E_n)$$
 
 These properties are crucial because they ensure that measures behave well with respect to limits of sets. The continuity from above property requires the additional condition that $$\mu(E_1) < \infty$$. No such condition is needed for continuity from below since measures are non-negative.
+
+**Finite Measure**: A measure $\mu$ on a ring $R$ is called finite if there exists a set $E \in R$ such that $\mu(E) < \infty$ and every set in $R$ is contained in $E$.
+
+**Sigma-Finite Measure**: A measure $\mu$ on a ring $R$ is called sigma-finite if there exists a countable collection of sets $\{E_n\}_{n=1}^{\infty}$ in $R$ such that:
+
+-	$\mu(E_n) < \infty$ for all $n \geq 1$
+-	Every set in $R$ is contained in $\bigcup_{n=1}^{\infty} E_n$
+In other words, the ring can be covered by countably many sets of finite measure.
+
+**Complete Measure**: A measure $\mu$ on a sigma-algebra $\Sigma$ is called complete if whenever $E \in \Sigma$ with $\mu(E) = 0$, then every subset $F \subseteq E$ also belongs to $\Sigma$ (and consequently $\mu(F) = 0$).
+
+
+# The Borel Sigma-Algebra
+
+The **Borel sigma-algebra** is one of the most fundamental sigma-algebras and forms the backbone for defining a lot of popular measures in Euclidean spaces, such as probabilty distributions of random variables, length, area and volumne and many more.
+
+
+- In $\mathbb{R}$, it is denoted by $B_1$. More generally, in $\mathbb{R}^n$, it is denoted by $B_n$.
+- It is generated by the **open sets** in $\mathbb{R}^n$. An equivalent way of generating it is through intervals (in $\mathbb{R}$) or boxes (in $\mathbb{R}^n$), often taken as half-open sets.
+
+A ring of sets $R$ on $\mathbb{R}^n$ can be constructed from finite unions of **half-open boxes** (also called half-open intervals in $\mathbb{R}^1$), specifically sets of the form $(a_1, b_1] \times (a_2, b_2] \times \cdots \times (a_n, b_n]$ where the $a_i, b_i$ are real numbers with $a_i < b_i$ for all $i$.
+
+$B_n = \sigma(R)$  is  the smallest sigma-algebra containing all half-open boxes is called the **Borel sigma-algebra** on $\mathbb{R}^n$. 
+
+Instead of defining it directly as a sigma algebra of open sets, and following the approach of first construction of a ring then generating a sigma algebra from that Ring is a powerful idea. The Carathéodory extension theorem extends a measure from a ring (or semiring) to a sigma-algebra. This stepwise approach makes formulation and proof techniques manageable and rigorous.
+Furthermore, we started with intervals (boxes), which themselves are pi-systems which will be useful to show uniqness in measures.
+
+**Equivalent Definitions**
+
+- Sigma algbra generated by open sets is same as sigma algebra generated collection of half-open boxes.
+
+- Sigma algebra generated by the Ring containing finite unions of half-open boxes is same as sigma algebra directly generated by the collection of half-open boxes.
+
+- Ring containing fintie unions of half open boxes is the same as Ring contininf fininte disjoint unions of half open boxes. 
+
+There is another way to directly define $B_n$ as product of borel sigma algebras of smaller dimensions which will be covered when we discuss product spaces.
 
 
 # Probability as a Measure
@@ -111,6 +147,42 @@ Probability $P$ is defined as a measure that satisfies the following axioms:
 This measure-theoretic approach provides the mathematical framework necessary for handling both discrete and continuous probability distributions within a unified theory. It allows us to rigorously define concepts like random variables, independence, and conditional probability.
 
 
+# Uniquness of a mesure (sigma-finite)
+
+
+A powerful concept in measure theory is that to prove uniqueness of a measure defined on a sigma-algebra generated by a simpler collection of sets, it suffices to verify uniqueness on that initial collection. This is formalized by the **pi-lambda theorem**.
+
+### Pi-System
+
+A **pi-system** ($\pi$-system) is a non-empty collection of subsets that is closed under finite intersection.
+Formally, a class $\mathcal{P}$ of subsets of a set $X$ is a pi-system if for any $A, B \in \mathcal{P}$, we have $A \cap B \in \mathcal{P}$.
+
+Example: The collection of all intervals (including half-open or open) in $\mathbb{R}$ forms a pi-system.
+
+
+### Lambda-System
+
+A **lambda-system** ($\lambda$-system, also called d-system or Dynkin system), is a collection $\Lambda$ of subsets of a set $X$ such that:
+
+1. $X \in \Lambda$
+2. If $A, B \in \Lambda$ and $A \subseteq B$, then $B \setminus A \in \Lambda$
+3. If $A_1, A_2, \ldots \in \Lambda$ are disjoint and their union is also in $\Lambda$, then $\bigcup_{n=1}^\infty A_n \in \Lambda$
+
+### Pi-Lambda Theorem and Uniqueness of sigma-finite measures
+
+The **pi-lambda theorem** (Dynkin’s theorem) states that if $\mathcal{P}$ is a pi-system and $\Lambda$ is a lambda-system with $\mathcal{P} \subseteq \Lambda$, then the sigma-algebra generated by $\mathcal{P}$, denoted $\sigma(\mathcal{P})$, is contained in $\Lambda$:
+
+$$
+\sigma(\mathcal{P}) \subseteq \Lambda
+$$
+
+
+In order to show uniqueness we will use the fact that any ring is a Pi-system and the collection of subsets where the measure is unique is a lambda system, provided that the measure is sigma-finite. Therefore the sigma algebra generated must be contained by the lambda system.
+
+Hence, to prove uniqueness of two measures defined on $\sigma(\mathcal{P})$, it is enough to check that they agree on the pi-system $\mathcal{P}$.
+
+***
+
 # Measurable Functions and Integration
 
 ## Measurable Functions
@@ -129,13 +201,13 @@ $$f : (X, \Sigma) \to (Y, \mathcal{T})$$
 
 In many applications, particularly in probability and analysis, $\mathcal{T}$ is often taken as the Borel sigma algebra on $\mathbb{R}^n$, which is the sigma algebra generated by all open sets in $\mathbb{R}^n$.
 
-For defining integrals in measure theory settings which extendsRiemann integral to more general settings, we assume $\mathcal{T}$ is Borel sigma algebra on $\mathbb{R}$. 
+For defining integrals in measure theory settings which extends Riemann integral to more general settings, we assume $\mathcal{T}$ is Borel sigma algebra on $\mathbb{R}$. 
 
 This gives rise to an equivalent condition for definition:
 
  $f^{-1}(a,\infty) \in \Sigma$ for any $a \in \mathbb{R}$.
 
-### Properties of Measurable Functions
+### Properties of Measurable Functions (Range belongs to $\mathbb{R}$)
 
 Measurable functions have several important properties that make them powerful tools in measure theory:
 
@@ -145,7 +217,7 @@ Measurable functions have several important properties that make them powerful t
 4. The point-wise supremum and infimum of a sequence of measurable functions is measurable.
 5. The liminf, limsup, and limit (all taken pointwise) of a sequence of measurable functions is a measurable function.
 
-These properties ensure that measurable functions form a robust class that's closed under many common operations, making them ideal for mathematical analysis.
+These properties ensure that measurable functions form a robust class that's closed under many common operations, making them ideal for real analysis.
 
 ## Simple Functions: Building Blocks for Integration
 
