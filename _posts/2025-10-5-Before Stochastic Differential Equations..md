@@ -8,7 +8,6 @@ tags:
   - SDE
   - Measure Theory
 ---
-# Things to know before SDEs
 
 When I first read [Øksendal's *Stochastic Differential Equations*](https://link.springer.com/book/10.1007/978-3-642-14394-6), I kept having to backtrack to piece together various concepts. Here's what I wish I'd reviewed beforehand, it'll make the book much more approachable.
 
