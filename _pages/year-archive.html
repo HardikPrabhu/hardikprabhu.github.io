@@ -191,7 +191,13 @@ redirect_from:
 {% comment %}
   Display uncategorized posts - will show all current posts until you add categories
 {% endcomment %}
-{% assign uncategorized = site.posts | where_exp: "post", "post.category == nil or post.category == ''" | sort: 'order' %}
+{% assign uncategorized = "" | split: "" %}
+{% for post in site.posts %}
+  {% unless post.category %}
+    {% assign uncategorized = uncategorized | push: post %}
+  {% endunless %}
+{% endfor %}
+{% assign uncategorized = uncategorized | sort: 'order' %}
 {% if uncategorized.size > 0 %}
   <div class="category-section">
     <h2 class="category-header">All Posts</h2>
