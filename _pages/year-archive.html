@@ -142,9 +142,31 @@ redirect_from:
 {% endfor %}
 
 {% comment %}
-  Sort categories alphabetically (or you can customize the sort order)
+  Define your preferred category order here - edit this list!
+  Categories not in this list will appear alphabetically after these
 {% endcomment %}
-{% assign sorted_categories = all_categories | sort %}
+{% assign priority_categories = "Foundations,Basics" | split: "," %}
+
+{% comment %}
+  Separate priority categories from others
+{% endcomment %}
+{% assign ordered_categories = "" | split: "" %}
+{% assign remaining_categories = "" | split: "" %}
+
+{% for cat in priority_categories %}
+  {% if all_categories contains cat %}
+    {% assign ordered_categories = ordered_categories | push: cat %}
+  {% endif %}
+{% endfor %}
+
+{% for cat in all_categories %}
+  {% unless priority_categories contains cat %}
+    {% assign remaining_categories = remaining_categories | push: cat %}
+  {% endunless %}
+{% endfor %}
+
+{% assign remaining_categories = remaining_categories | sort %}
+{% assign sorted_categories = ordered_categories | concat: remaining_categories %}
 
 {% comment %}
   Display each category with its posts
