@@ -130,22 +130,26 @@ redirect_from:
 {% include base_path %}
 
 {% comment %}
-  Group posts by category and sort within each category by order field
+  Dynamically collect all unique categories from posts
 {% endcomment %}
-
-{% assign categories_list = site.posts | map: 'category' | uniq | compact %}
-{% assign sorted_categories = categories_list | sort %}
+{% assign all_categories = "" | split: "" %}
+{% for post in site.posts %}
+  {% if post.category %}
+    {% unless all_categories contains post.category %}
+      {% assign all_categories = all_categories | push: post.category %}
+    {% endunless %}
+  {% endif %}
+{% endfor %}
 
 {% comment %}
-  Define category display order - edit this to change section order
-  This follows a learning path building up to Neural SDEs
+  Sort categories alphabetically (or you can customize the sort order)
 {% endcomment %}
-{% assign category_order = "Foundations,Stochastic Calculus,Deep Learning Basics,Neural SDEs,Applications" | split: "," %}
+{% assign sorted_categories = all_categories | sort %}
 
 {% comment %}
-  First, display all posts with categories in defined order
+  Display each category with its posts
 {% endcomment %}
-{% for category_name in category_order %}
+{% for category_name in sorted_categories %}
   {% assign category_posts = site.posts | where: 'category', category_name | sort: 'order' %}
   {% if category_posts.size > 0 %}
     <div class="category-section">
@@ -189,7 +193,7 @@ redirect_from:
 {% endfor %}
 
 {% comment %}
-  Display uncategorized posts - will show all current posts until you add categories
+  Display uncategorized posts at the end
 {% endcomment %}
 {% assign uncategorized = "" | split: "" %}
 {% for post in site.posts %}
@@ -200,7 +204,7 @@ redirect_from:
 {% assign uncategorized = uncategorized | sort: 'order' %}
 {% if uncategorized.size > 0 %}
   <div class="category-section">
-    <h2 class="category-header">All Posts</h2>
+    <h2 class="category-header">Uncategorized</h2>
     <div class="posts-grid">
       {% for post in uncategorized %}
         <div class="post-card">
