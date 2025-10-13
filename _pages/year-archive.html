@@ -1,7 +1,7 @@
 ---
 layout: archive
 permalink: /year-archive/
-title: "🤓 Blog Posts"
+title: "🤓 Blog posts"
 author_profile: false
 redirect_from:
   - /wordpress/blog-posts/
@@ -143,7 +143,7 @@ redirect_from:
 {% assign category_order = "Foundations,Stochastic Calculus,Deep Learning Basics,Neural SDEs,Applications" | split: "," %}
 
 {% comment %}
-  Display categories in defined order
+  First, display all posts with categories in defined order
 {% endcomment %}
 {% for category_name in category_order %}
   {% assign category_posts = site.posts | where: 'category', category_name | sort: 'order' %}
@@ -189,12 +189,12 @@ redirect_from:
 {% endfor %}
 
 {% comment %}
-  Display uncategorized posts at the end
+  Display uncategorized posts - will show all current posts until you add categories
 {% endcomment %}
 {% assign uncategorized = site.posts | where_exp: "post", "post.category == nil or post.category == ''" | sort: 'order' %}
 {% if uncategorized.size > 0 %}
   <div class="category-section">
-    <h2 class="category-header">Other Posts</h2>
+    <h2 class="category-header">All Posts</h2>
     <div class="posts-grid">
       {% for post in uncategorized %}
         <div class="post-card">
