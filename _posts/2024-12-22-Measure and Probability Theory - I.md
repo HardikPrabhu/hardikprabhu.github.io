@@ -3,7 +3,7 @@ title: 'Measure and Probability Theory Essentials'
 date: Dec 22, 2024
 author: Hardik Prabhu
 image: 
-
+category: Foundations
 tags:
   - Mathematics
   - Probability

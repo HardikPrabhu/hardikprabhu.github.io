@@ -3,7 +3,7 @@ title: 'Variational Autoencoders'
 date: Sept 11, 2023
 author: Hardik Prabhu
 image: "/images/blogs_img/vae/image.png"
-
+category: Basics
 tags:
   - VAE
   - Generative modeling

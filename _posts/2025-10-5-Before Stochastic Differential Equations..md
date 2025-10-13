@@ -3,7 +3,7 @@ title: 'Before Stochastic Differential Equations'
 date: Oct 06, 2025
 author: Hardik Prabhu
 image: 
-
+category: Foundations
 tags:
   - SDE
   - Measure Theory
@@ -268,4 +268,8 @@ for all finite subsets $\{t_1, \ldots, t_k\} \subseteq T$ and all Borel sets $B_
 
 Notice, that the probability distribution is unique over $\sigma(X)$ because cylinder sets generates the sigma-algebra. 
 
+
+# Filterations and Martingales
+
+Let's take a detour and first discuss all the conditional relations.
 

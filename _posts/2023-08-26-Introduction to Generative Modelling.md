@@ -3,7 +3,7 @@ title: 'Introduction to Generative Modeling'
 date: Aug 26, 2023
 author: Hardik Prabhu
 image: "/images/blogs_img/gen_intro/image.png"
-
+category: Basics
 tags:
   - Generative Modeling
   - Probability
