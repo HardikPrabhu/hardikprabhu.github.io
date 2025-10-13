@@ -4,6 +4,7 @@ date: Sept 11, 2023
 author: Hardik Prabhu
 image: "/images/blogs_img/vae/image.png"
 category: Basics
+order: 1
 tags:
   - VAE
   - Generative modeling

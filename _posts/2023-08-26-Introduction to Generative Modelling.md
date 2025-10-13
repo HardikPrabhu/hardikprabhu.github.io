@@ -4,6 +4,7 @@ date: Aug 26, 2023
 author: Hardik Prabhu
 image: "/images/blogs_img/gen_intro/image.png"
 category: Basics
+order: 2
 tags:
   - Generative Modeling
   - Probability
