@@ -267,9 +267,6 @@ $$
 
 for all finite subsets $\{t_1, \ldots, t_k\} \subseteq T$ and all Borel sets $B_i \subseteq \mathbb{R}^n$.
 
-Notice, that the probability distribution is unique over $\sigma(X)$ because cylinder sets generates the sigma-algebra. 
-
-
 # Filterations and Martingales
 
 Let's take a detour and first discuss all the conditional relations.
