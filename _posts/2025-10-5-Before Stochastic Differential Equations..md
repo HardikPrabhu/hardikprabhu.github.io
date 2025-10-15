@@ -267,7 +267,97 @@ $$
 
 for all finite subsets $\{t_1, \ldots, t_k\} \subseteq T$ and all Borel sets $B_i \subseteq \mathbb{R}^n$.
 
-# Filterations and Martingales
+# Filtrations and Martingales
 
-Let's take a detour and first discuss all the conditional relations.
+Let's take a detour and first discuss a few key concepts from measure theory.
 
+**Absolute Continuity**: Let $(\Omega, \mathcal{F})$ be a measurable space. Let measures $P$ and $Q$ be defined on the space. If $P(A) = 0 \implies Q(A) = 0$, then $Q$ is said to be absolutely continuous with respect to $P$, and we write $Q \ll P$.
+
+An equivalent statement which looks at the limiting behavior:
+
+For all $\epsilon > 0$, there exists $\delta > 0$ such that $P(A) < \delta \implies Q(A) < \epsilon$.
+
+This tells us that if one measure is integral of another then its absolutely continous.
+If $Q$ can be written as an integral with respect to $P$, i.e., there exists a measurable function $f : \Omega \to [0, \infty)$ such that
+
+$$
+Q(A) = \int_A f \, dP
+$$
+
+for all $A \in \mathcal{F}$, then $Q \ll P$ (i.e., $Q$ is absolutely continuous with respect to $P$).
+
+The converse of this statment which is not imediately obivous is known as Raydon-nykodym theorem.
+
+**Radon-Nikodym Theorem**: Let $(\Omega, \mathcal{F})$ be a measurable space and let $P$ and $Q$ be σ-finite measures on $(\Omega, \mathcal{F})$. If $Q \ll P$, then there exists a measurable function $f : \Omega \to [0, \infty)$ such that
+
+$$
+Q(A) = \int_A f \, dP
+$$
+
+for all $A \in \mathcal{F}$. The function $f$ is called the Radon-Nikodym derivative of $Q$ with respect to $P$, denoted $f = \frac{dQ}{dP}$.
+
+**Intuition**: To see this, we can take any finite partition of $\Omega$ and define a simple function as a sum where the constants are ratios of the measures:
+
+$$
+f_n = \sum_{i=1}^{n} \frac{Q(A_i)}{P(A_i)} \mathbf{1}_{A_i}
+$$
+
+where $\{A_i\}$ is a partition of $\Omega$. Its easy to see over any set which is union of subsets of partitions, the integral equation holds true.  As we refine the partitions to enclose any arbitrary subset in the limit, these simple functions converge to the Radon-Nikodym derivative $\frac{dQ}{dP}$.
+
+If two measures are concentrated on different disjoint subsets then they are mutally singular.
+
+**Mutual Singularity**: If two measures are concentrated on different disjoint subsets, then they are mutually singular. We write $P \perp Q$ if there exist disjoint sets $A, B \in \mathcal{F}$ with $A \cup B = \Omega$ such that $P(A) = Q(B) = 0$.
+
+**Lebesgue Decomposition Theorem**: Any two σ-finite measures $P$ and $Q$ on the same measurable space $(\Omega, \mathcal{F})$ can be uniquely decomposed as:
+
+$$
+Q = Q_{ac} + Q_s
+$$
+
+where $Q_{ac} \ll P$ (the absolutely continuous part) and $Q_s \perp P$ (the singular part).
+
+**Continuous Random Variable**: A random variable $X : \Omega \to \mathbb{R}^n$ is called continuous if its distribution has a probability density function (PDF). That is, there exists a non-negative measurable function $f_X : \mathbb{R}^n \to [0, \infty)$ such that
+
+$$
+P(X \in A) = \int_A f_X(x) \, dx
+$$
+
+for all Borel sets $A \subseteq \mathbb{R}^n$. Equivalently, the distribution of $X$ is absolutely continuous with respect to the Lebesgue measure on $\mathbb{R}^n$, and $f_X = \frac{dP_X}{dm_n}$ is the Radon-Nikodym derivative.
+
+### Conditional Expectation Relative to a σ-field
+
+**Expected Value for $\mathbb{R}^n$-valued Random Variables**: When $X : \Omega \to \mathbb{R}^n$ is a random variable with $X = (X_1, \ldots, X_n)$, the expected value is defined component-wise:
+
+$$E[X] = (E[X_1], \ldots, E[X_n]) \in \mathbb{R}^n$$
+
+where each component $E[X_i] = \int_{\Omega} X_i \, dP$ is the usual expected value of a real-valued random variable.
+
+Equivalently, we can write:
+
+$$E[X] = \int_{\Omega} X \, dP$$
+
+where the integral is understood in the Bochner sense (integrating vector-valued functions). The random variable $X$ is integrable if $E[\|X\|] = \int_{\Omega} \|X\| \, dP < \infty$, where $\|\cdot\|$ is the Euclidean norm on $\mathbb{R}^n$
+
+For a probability space $(\Omega, \mathcal{F}, P)$, we can select any sub-σ-field $\mathcal{G} \subseteq \mathcal{F}$ (a sub-collection that is itself a σ-field).
+
+Given an integrable random variable $X : \Omega \to \mathbb{R}^n$ (i.e., $E[\|X\|] < \infty$), the conditional expectation of $X$ given $\mathcal{G}$, denoted $E[X \mid \mathcal{G}]$, is a $\mathcal{G}$-measurable random variable taking values in $\mathbb{R}^n$ that satisfies:
+
+$$\int_A E[X \mid \mathcal{G}] \, dP = \int_A X \, dP$$
+
+for all $A \in \mathcal{G}$. Both sides are vectors in $\mathbb{R}^n$, and the equality holds component-wise.
+
+For each component $X_i$, define a signed measure on $(\Omega, \mathcal{G})$ by:
+
+$$\nu_i(A) = \int_A X_i \, dP \quad \text{for all } A \in \mathcal{G}$$
+
+Since $E[|X_i|] < \infty$, we can decompose $X_i = X_i^+ - X_i^-$ where $X_i^+, X_i^- \geq 0$. Then $\nu_i = \nu_i^+ - \nu_i^-$ where both $\nu_i^+$ and $\nu_i^-$ are finite measures that are absolutely continuous with respect to the restriction of $P$ to $\mathcal{G}$.
+
+By the Radon-Nikodym theorem, there exist $\mathcal{G}$-measurable functions $f_i^+$ and $f_i^-$ such that:
+
+$$\nu_i^+(A) = \int_A f_i^+ \, dP \quad \text{and} \quad \nu_i^-(A) = \int_A f_i^- \, dP$$
+
+Setting $f_i = f_i^+ - f_i^-$, we have $\nu_i(A) = \int_A f_i \, dP$ for all $A \in \mathcal{G}$.
+
+The conditional expectation is then $E[X \mid \mathcal{G}] = (f_1, \ldots, f_n)$, which is $\mathcal{G}$-measurable and satisfies the defining property. Uniqueness follows from the fact that if two $\mathcal{G}$-measurable functions agree on all sets in $\mathcal{G}$, they are equal almost surely.
+
+[**Pending**]
