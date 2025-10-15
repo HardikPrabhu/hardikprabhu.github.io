@@ -350,7 +350,7 @@ For each component $X_i$, define a signed measure on $(\Omega, \mathcal{G})$ by:
 
 $$\nu_i(A) = \int_A X_i \, dP \quad \text{for all } A \in \mathcal{G}$$
 
-Since $E[|X_i|] < \infty$, we can decompose $X_i = X_i^+ - X_i^-$ where $X_i^+, X_i^- \geq 0$. Then $\nu_i = \nu_i^+ - \nu_i^-$ where both $\nu_i^+$ and $\nu_i^-$ are finite measures that are absolutely continuous with respect to the restriction of $P$ to $\mathcal{G}$.
+Since $E[\|X_i\|] < \infty$, we can decompose $X_i = X_i^+ - X_i^-$ where $X_i^+, X_i^- \geq 0$. Then $\nu_i = \nu_i^+ - \nu_i^-$ where both $\nu_i^+$ and $\nu_i^-$ are finite measures that are absolutely continuous with respect to the restriction of $P$ to $\mathcal{G}$.
 
 By the Radon-Nikodym theorem, there exist $\mathcal{G}$-measurable functions $f_i^+$ and $f_i^-$ such that:
 
