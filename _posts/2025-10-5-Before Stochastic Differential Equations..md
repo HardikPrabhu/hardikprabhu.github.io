@@ -21,6 +21,13 @@ $$
 
 In some texts, the term "random variable" is reserved for mappings $X: \Omega \to \mathbb{R}$, while "random vector" is used for mappings to $\mathbb{R}^n$ with $n > 1$. We will not make this distinction here and use "random variable" for both cases.
 
+
+The push forward measure induced on borel space over $\mathbb{R}^n$ is also known as the distribution of the random variable.
+
+i.e., $P_X: \mathcal{B}_n \to [0,1]$ such that
+
+$$P_X(B) = P(X^{-1}(B)) = P(\{\omega \in \Omega : X(\omega) \in B\})$$
+
 **Note:** If $X = (X_1, X_2, \ldots, X_n): \Omega \to \mathbb{R}^n$ is a random variable, then each component $X_i: \Omega \to \mathbb{R}$ is itself a random variable.
 
 This is possible because every linear transformation is Borel measurable, and if $X$ is Borel measurable, then the composition is Borel measurable.
@@ -267,7 +274,7 @@ $$
 
 for all finite subsets $\{t_1, \ldots, t_k\} \subseteq T$ and all Borel sets $B_i \subseteq \mathbb{R}^n$.
 
-# Filtrations and Martingales
+# What does "conditioning" mean:
 
 Let's take a detour and first discuss a few key concepts from measure theory.
 
@@ -323,6 +330,35 @@ P(X \in A) = \int_A f_X(x) \, dx
 $$
 
 for all Borel sets $A \subseteq \mathbb{R}^n$. Equivalently, the distribution of $X$ is absolutely continuous with respect to the Lebesgue measure on $\mathbb{R}^n$, and $f_X = \frac{dP_X}{dm_n}$ is the Radon-Nikodym derivative.
+
+**Joint Distribution**: As we discussed before, by stacking a collection of random variables, we get another random variable, the distribution of which is often referred to as the joint distribution. If the joint distribution is absolutely continuous with respect to the Lebesgue measure, then it has a density function.
+
+As a concrete example, consider $Z = (X, Y): \Omega \to \mathbb{R}^{2n}$ where $X: \Omega \to \mathbb{R}^n$ and $Y: \Omega \to \mathbb{R}^n$. Suppose $Z$ has density function $f_{X,Y}$. Then for any rectangle $A \times B \in \mathcal{B}_{2n}$ where $A, B \in \mathcal{B}_n$:
+
+$$P_Z(A \times B) = \int_A \int_B f_{X,Y}(x, y) \, dy \, dx$$
+
+where the integrals are with respect to the Lebesgue measure on $\mathbb{R}^n$.
+
+We can obtain the marginal densities of $X$ and $Y$ by "marginalizing out" the other variable. For $X$, consider any Borel set $A \in \mathcal{B}_n$:
+
+$$P_X(A) = P(X \in A) = P(X \in A, Y \in \mathbb{R}^n) = P_Z(A \times \mathbb{R}^n)$$
+
+By Fubini's theorem (since $f_{X,Y} \geq 0$ and integrable):
+
+$$P_X(A) = \int_A \int_{\mathbb{R}^n} f_{X,Y}(x, y) \, dy \, dx = \int_A \left[\int_{\mathbb{R}^n} f_{X,Y}(x, y) \, dy\right] dx$$
+
+Then the marginal density:
+$$f_X(x) = \int_{\mathbb{R}^n} f_{X,Y}(x, y) \, dy$$
+
+Then $P_X(A) = \int_A f_X(x) \, dx$, showing that $X$ is absolutely continuous with density $f_X$.
+
+Similarly, the marginal density of $Y$ is:
+$$f_Y(y) = \int_{\mathbb{R}^n} f_{X,Y}(x, y) \, dx$$
+
+Note that $X$ and $Y$ may both be continuous random variables (each absolutely continuous with respect to Lebesgue measure on $\mathbb{R}^n$), but this does *not* guarantee that $Z = (X,Y)$ is absolutely continuous with respect to Lebesgue measure on $\mathbb{R}^{2n}$. 
+
+*Counterexample*: Let $X \sim \text{Uniform}[0,1]$ and $Y = X$. Then both $X$ and $Y$ are continuous, but $Z = (X, Y)$ is concentrated on the diagonal $\{(x, x): x \in [0,1]\}$, which has Lebesgue measure zero in $\mathbb{R}^{2}$. Thus $P_Z$ is singular with respect to the Lebesgue measure on $\mathbb{R}^{2}$ and has no density function.
+
 
 ### Conditional Expectation Relative to a σ-field
 
