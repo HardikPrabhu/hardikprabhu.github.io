@@ -10,7 +10,7 @@ locale                   : "en-IN"
 title                    : "Hardik's Homepage"
 title_separator          : "-"
 name                     : &name "Hardik Prabhu"
-description              : &description "personal description"
+description              : &description "Hardik Prabhu – ML Researcher at Cloudaeye, working on AI code review and deep generative models."
 url                      : https://hardikprabhu.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "HardikPrabhu/hardikprabhu.github.io"
@@ -73,7 +73,7 @@ social:
 
 # Analytics
 analytics:
-  provider               :  "google-universal" # false (default), "google", "google-universal", "custom"
+  provider               : false # false (default), "google", "google-universal", "custom"
   google:
     tracking_id          :
 
@@ -103,7 +103,7 @@ author:
   impactstory      :
   lastfm           :
   linkedin         : "hardik-prabhu"
-  orcid            : "https://orcid.org/0000-0001-5577-4511"
+  orcid            :
   pinterest        :
   soundcloud       :
   stackoverflow    :
